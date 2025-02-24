@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Miner Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Pixel Miner</h1>
+    <div class="stats">
+      <p>Coins: <span id="coins">0</span></p>
+      <p>Diamonds: <span id="diamonds">0</span></p>
+    </div>
+    <div class="mine-container">
+      <button id="mine-btn">Mine!</button>
+      <div id="click-effect"></div>
+    </div>
+    <div class="upgrades">
+      <h2>Upgrades</h2>
+      <button id="upgrade-click">Upgrade Click (Cost: 10 Coins)</button>
+      <button id="upgrade-click-2x">Upgrade Click 2x (Cost: 20 Coins)</button>
+      <button id="upgrade-click-5x">Upgrade Click 5x (Cost: 50 Coins)</button>
+      <button id="upgrade-click-10x">Upgrade Click 10x (Cost: 100 Coins)</button>
+      <p class="info">Meningkatkan koin per klik. Level: <span id="click-level">1</span></p>
+      <button id="upgrade-idling">Upgrade Idling (Cost: 50 Coins)</button>
+      <button id="upgrade-idling-2x">Upgrade Idling 2x (Cost: 100 Coins)</button>
+      <button id="upgrade-idling-5x">Upgrade Idling 5x (Cost: 250 Coins)</button>
+      <button id="upgrade-idling-10x">Upgrade Idling 10x (Cost: 500 Coins)</button>
+      <p class="info">Meningkatkan koin per idling. Level: <span id="idling-level">1</span></p>
+    </div>
+    <div class="redeem">
+      <h2>Redeem</h2>
+      <input type="number" id="redeem-amount" min="1" max="99" value="1" />
+      <button id="redeem-btn">Redeem <span id="redeem-value">1000</span> Coins for <span id="redeem-diamonds">1</span> Diamond</button>
+      <button id="redeem-max">Maks</button>
+      <p class="info">Tukar koin menjadi diamond (1-99 diamond).</p>
+    </div>
+    <div class="buffs">
+      <h2>Buffs</h2>
+      <button id="buff-luck">Buff Luck (Cost: 25 Diamonds)</button>
+      <p class="info">Setiap klik memiliki kesempatan mendapatkan bonus koin (2x, 5x, 7x, atau 10x).</p>
+      <button id="buff-idling-super">Buff Idling Super (Cost: 50 Diamonds)</button>
+      <p class="info">Meningkatkan kecepatan idling menjadi 0.25 detik selama 1 menit.</p>
+      <button id="buff-multiplier">Buff Multiplier (Cost: 100 Diamonds)</button>
+      <p class="info">Meningkatkan multiplier koin (2x - 10x) selama 1 menit.</p>
+      <button id="buff-super-jackpot">Buff Super Jackpot (Cost: 200 Diamonds)</button>
+      <p class="info">Meningkatkan kemungkinan mendapatkan Super Jackpot dan Jackpot sebesar 25% selama 1 menit.</p>
+      <div id="buff-active">
+        <h3>Active Buffs</h3>
+        <div id="buff-list"></div>
+      </div>
+    </div>
+    <div class="gacha">
+      <h2>Gacha</h2>
+      <button id="gacha-btn-1x">Spin Gacha 1x (Cost: 100 Diamonds)</button>
+      <button id="gacha-btn-10x">Spin Gacha 10x (Cost: 10,000 Diamonds)</button>
+      <p class="info">Dapatkan koin, jackpot, atau super jackpot!</p>
+      <div id="gacha-wheel">
+        <div class="wheel">
+          <div class="box" id="box1">🎁</div>
+          <div class="box" id="box2">🎁</div>
+          <div class="box" id="box3">🎁</div>
+          <div class="box" id="box4">🎁</div>
+          <div class="box" id="box5">SPIN</div>
+          <div class="box" id="box6">🎁</div>
+          <div class="box" id="box7">🎁</div>
+          <div class="box" id="box8">🎁</div>
+          <div class="box" id="box9">🎁</div>
+        </div>
+        <div id="gacha-result"></div>
+      </div>
+    </div>
+    <div class="achievements">
+      <h2>Achievements</h2>
+      <button id="view-achievements">View Achievements</button>
+      <div id="achievements-list" style="display: none;">
+        <p><strong>Klik Super</strong>: 1000 Klik <span id="achievement-klik-super">🔒</span> <button class="claim-btn" id="claim-klik-super" disabled>Klaim</button></p>
+        <p><strong>Klik Jackpot</strong>: 10000 Klik <span id="achievement-klik-jackpot">🔒</span> <button class="claim-btn" id="claim-klik-jackpot" disabled>Klaim</button></p>
+        <p><strong>Klik Dewa</strong>: 1000000 Klik <span id="achievement-klik-dewa">🔒</span> <button class="claim-btn" id="claim-klik-dewa" disabled>Klaim</button></p>
+        <p><strong>Gacor</strong>: Dapatkan 1 juta koin dari gacha <span id="achievement-gacor">🔒</span> <button class="claim-btn" id="claim-gacor" disabled>Klaim</button></p>
+        <p><strong>Super Gacor</strong>: Dapatkan 1 juta diamond dari gacha <span id="achievement-super-gacor">🔒</span> <button class="claim-btn" id="claim-super-gacor" disabled>Klaim</button></p>
+        <p><strong>Miner Sejati</strong>: Dapatkan 10000 koin <span id="achievement-miner-sejati">🔒</span> <button class="claim-btn" id="claim-miner-sejati" disabled>Klaim</button></p>
+        <p><strong>Miner Super</strong>: Dapatkan 100000 koin <span id="achievement-miner-super">🔒</span> <button class="claim-btn" id="claim-miner-super" disabled>Klaim</button></p>
+        <p><strong>Miner Dewa</strong>: Dapatkan 1000000 koin <span id="achievement-miner-dewa">🔒</span> <button class="claim-btn" id="claim-miner-dewa" disabled>Klaim</button></p>
+        <p><strong>Tangan Pembantu</strong>: Aktifkan buff 100x <span id="achievement-tangan-pembantu">🔒</span> <button class="claim-btn" id="claim-tangan-pembantu" disabled>Klaim</button></p>
+        <p><strong>Tangan Malaikat</strong>: Aktifkan buff 10000x <span id="achievement-tangan-malaikat">🔒</span> <button class="claim-btn" id="claim-tangan-malaikat" disabled>Klaim</button></p>
+        <p><strong>Tangan Dewa</strong>: Aktifkan buff 1000000x <span id="achievement-tangan-dewa">🔒</span> <button class="claim-btn" id="claim-tangan-dewa" disabled>Klaim</button></p>
+        <p><strong>Lebih Cepat Lebih Baik</strong>: Upgrade klik koin mencapai level 500 <span id="achievement-lebih-cepat">🔒</span> <button class="claim-btn" id="claim-lebih-cepat" disabled>Klaim</button></p>
+        <p><strong>Kecepatan Tangan Dewa</strong>: Level koin mencapai 1000 <span id="achievement-kecepatan-dewa">🔒</span> <button class="claim-btn" id="claim-kecepatan-dewa" disabled>Klaim</button></p>
+        <p><strong>Biarkan Mesin yang Bekerja</strong>: Idling level 500 <span id="achievement-mesin-bekerja">🔒</span> <button class="claim-btn" id="claim-mesin-bekerja" disabled>Klaim</button></p>
+        <p><strong>Robot Super</strong>: Idling mencapai level 1000 <span id="achievement-robot-super">🔒</span> <button class="claim-btn" id="claim-robot-super" disabled>Klaim</button></p>
+      </div>
+    </div>
+    <div class="clear-stage">
+      <button id="clear-stage-btn" disabled>Clear Stage (Cost: 1,000,000 Diamonds)</button>
+      <p class="info">Selesaikan game dengan membayar 1 juta diamond.</p>
+    </div>
+    <!-- Tambahkan tombol reset progress -->
+    <div class="reset-progress">
+      <button id="reset-progress-btn">Reset Progress</button>
+    </div>
+  </div>
+  <audio id="bg-music" loop>
+    <source src="sounds/bg-music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="click-sound">
+    <source src="sounds/click-sound.mp3" type="audio/mpeg">
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>

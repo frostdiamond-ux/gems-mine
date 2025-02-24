@@ -1,0 +1,292 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #2d2d2d;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  color: #ff6f61;
+}
+
+.stats {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+button {
+  background: linear-gradient(135deg, #ff6f61, #ff9a9e);
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.mine-container {
+  position: relative;
+  margin: 20px 0;
+}
+
+#mine-btn {
+  font-size: 1.2rem;
+  padding: 30px 60px;
+  background: #ff6f61;
+}
+
+#click-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.coin-pop {
+  position: absolute;
+  font-size: 1rem;
+  color: gold;
+  animation: floatUp 1s ease-out;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-50px); opacity: 0; }
+}
+
+.upgrades, .redeem, .buffs, .gacha, .clear-stage, .achievements {
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+  font-size: 0.7rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+#buff-active {
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#buff-list {
+  max-height: 100px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.buff-item {
+  font-size: 0.8rem;
+  margin: 5px 0;
+  padding: 5px;
+  background: rgba(255, 111, 97, 0.2);
+  border-radius: 5px;
+}
+
+/* Gacha Wheel */
+#gacha-wheel {
+  margin-top: 20px;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.wheel {
+  display: contents;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: #ff6f61;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#box5 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background: #fff;
+  color: #ff6f61;
+  font-weight: bold;
+}
+
+/* Highlight Border Animation */
+@keyframes highlight {
+  0% { border-color: #fff; }
+  50% { border-color: gold; }
+  100% { border-color: #fff; }
+}
+
+.highlight {
+  animation: highlight 1s linear infinite;
+}
+
+/* Achievement Claim Button */
+.claim-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.claim-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.claim-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+#gacha-result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.victory-container {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 50px auto;
+  color: #2d2d2d;
+}
+
+.victory-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.victory-container p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+#play-again {
+  background: linear-gradient(135deg, #ff6f61, #ff9a9e);
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#play-again:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+#redeem-amount {
+  width: 60px;
+  padding: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+#redeem-max {
+  background: linear-gradient(135deg, #ff6f61, #ff9a9e);
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#redeem-max:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset Progress Button */
+.reset-progress {
+  margin-top: 20px;
+}
+
+#reset-progress-btn {
+  background: #ff6f61;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#reset-progress-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
